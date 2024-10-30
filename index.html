@@ -5,12 +5,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #2A2A3A;
+            z-index: 1000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .modal .nav-links {
+            flex-direction: column;
+            align-items: center;
+            margin-top: 4rem;
+        }
+
+        .close-button {
+            background: none;
+            border: none;
+            padding: 1rem;
+            cursor: pointer;
+            color: white;
+        }
+
+        .close-button:hover {
+            transform: scale(1.1);
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <nav class="nav-container">
+        <!-- Desktop Navigation -->
+        <nav class="nav-container desktop-nav">
             <div class="nav-content">
-                <div class="logo"></div>
+                <div class="logo">
+                    <img src="assets/svg/sparkles.svg" alt="Logo">
+                </div>
                 <ul class="nav-links">
                     <li><a href="#projects">Projects</a></li>
                     <li><a href="#process">Process</a></li>
@@ -19,16 +67,46 @@
             </div>
         </nav>
 
+        <!-- Mobile Navigation -->
+        <nav class="nav-container mobile-nav">
+            <div class="nav-content">
+                <div class="logo">
+                    <img src="assets/svg/sparkles.svg" alt="Logo">
+                </div>
+                <button class="button-link" onclick="toggleModal()">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3 12H21M3 6H21M3 18H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Full Page Modal -->
+        <div class="modal" id="navModal">
+            <div class="modal-content">
+                <button class="close-button" onclick="toggleModal()">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18 6L6 18M6 6L18 18" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                <ul class="nav-links">
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#process">Process</a></li>
+                    <li><a href="#about">About</a></li>
+                </ul>
+            </div>
+        </div>
+
         <div class="header-container">
             <h1>Main Title</h1>
             <p>This is the introduction paragraph that provides context for the content below.</p>
             <div class="button-container" style="padding-top: 2rem;">
-                <button class="button-primary">View Projects</button>
+                <button class="button-primary" href="#first-project">View Projects</button>
                 <button class="button-secondary">Contact Me</button>
             </div>
         </div>
 
-        <div class="paragraph-container">
+        <div id="first-project" class="paragraph-container">
             <img src="https://framerusercontent.com/images/ToJcGYhcrLuttRRLHficck.png" alt="Placeholder image">
             <h3>Section Title</h3>
             <div class="tag-container">
@@ -56,12 +134,26 @@
 
         <div class="paragraph-final" style="display: flex; gap: 2rem; align-items: center;">
             <div style="flex: 1;">
-                <h2>Wanna know more about me? let's get in touch.</h2>
+                <h2>To learn more about my process and project don't hesistate to contact me!</h2>
                 <div style="padding-top: 1rem;">
                     <button class="button-primary">Contact Me</button>
                 </div>
             </div>
             <div style="flex: 1;">
-                <img src="https://framerusercontent.com/images/ToJcGYhcrLuttRRLHficck.png" alt="Contact section image">
+                <img src="assets/svg/avatartion.png" alt="Contact section image">
             </div>
         </div>
+    </div>
+
+    <footer style="background-color: #2A2A3A; width: 100%; height: 20rem; display: flex; justify-content: center; align-items: center;">
+        <p style="color: white;">Coded with 💜 thanks to Cursor</p>
+    </footer>
+
+    <script>
+        function toggleModal() {
+            const modal = document.getElementById('navModal');
+            modal.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
