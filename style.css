@@ -18,6 +18,8 @@ body {
 }
 
 /* Container */
+
+.p {max-width: 80%;}
 .container {
     max-width: 90%;
     margin: 0 auto;
@@ -77,6 +79,7 @@ body {
     margin-bottom: 2rem;
     background: #2A2A3A;
     box-shadow: 0 4px 12px rgba(42, 42, 58, 0.20); /* Added subtle shadow */
+    z-index: 100;
 }
 
 .nav-content {
